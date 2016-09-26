@@ -1,7 +1,28 @@
-//	Initialize the Game and start it.
- 
+/***************
+ * PART FIVE - Finishing touches
+ ***************/
+
+/* NOTES TO REMEMBER
+ * Could add
+ * - hitboxes to all objects to make collision better
+ * - levels
+ * - bosses
+ * - explosions / particles
+ * - parallax background
+ * - vectors for movement
+ * - lirbraries! http://www.createjs.com/#!/CreateJS
+ */
+
+/* RESOURCES
+ * http://www.w3schools.com/html5/html5_ref_av_dom.asp
+ * http://www.superflashbros.net/as3sfxr/
+ */
+
+/**
+ * Initialize the Game and start it.
+ */
 var game = new Game();
-var highscore=0;
+
 function init() {
 	game.init();
 }
@@ -29,12 +50,23 @@ var imageRepository = new function() {
 			window.init();
 		}
 	}
-	this.background.onload = function() {	imageLoaded();  	}
-	this.spaceship.onload = function() {	imageLoaded();		}
-	this.bullet.onload = function() {		imageLoaded();		}
-	this.enemy.onload = function() {		imageLoaded();		}
-	this.enemyBullet.onload = function() {	imageLoaded();		}
+	this.background.onload = function() {
+		imageLoaded();
+	}
+	this.spaceship.onload = function() {
+		imageLoaded();
+	}
+	this.bullet.onload = function() {
+		imageLoaded();
+	}
+	this.enemy.onload = function() {
+		imageLoaded();
+	}
+	this.enemyBullet.onload = function() {
+		imageLoaded();
+	}
 
+	// Set images src
 	this.background.src = "imgs/bg.png";
 	this.spaceship.src = "imgs/ship.png";
 	this.bullet.src = "imgs/bullet.png";
@@ -620,9 +652,6 @@ function Enemy() {
 		}
 		else {
 			game.playerScore += 10;
-			if(highscore<game.playerScore)
-				highscore=game.playerScore;
-			document.getElementById("h2").innerHTML="Highscore: "+highscore;
 			game.explosion.get();
 			return true;
 		}
